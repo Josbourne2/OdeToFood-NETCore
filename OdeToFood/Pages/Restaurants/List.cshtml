@@ -40,7 +40,15 @@
                 <a class="btn btn-lg"
                    asp-page="./Detail"
                    asp-route-restaurantId="@restaurant.Id">
-                    View details
+                    <span class="fa fa-search"></span>
+
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-lg"
+                   asp-page="./Edit"
+                   asp-route-restaurantId="@restaurant.Id">
+                    <span class="fa fa-edit"></span>
 
                 </a>
             </td>
