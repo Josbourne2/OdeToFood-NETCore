@@ -32,27 +32,35 @@
 
     @foreach (var restaurant in Model.Restaurants)
     {
-        <tr>
-            <td>@restaurant.Name</td>
-            <td>@restaurant.Location</td>
-            <td>@restaurant.Cuisine</td>
-            <td>
-                <a class="btn btn-lg"
-                   asp-page="./Detail"
-                   asp-route-restaurantId="@restaurant.Id">
-                    <span class="fa fa-search"></span>
+<tr>
+    <td>@restaurant.Name</td>
+    <td>@restaurant.Location</td>
+    <td>@restaurant.Cuisine</td>
+    <td>
+        <a class="btn btn-lg"
+           asp-page="./Detail"
+           asp-route-restaurantId="@restaurant.Id">
+            <span class="fa fa-search"></span>
 
-                </a>
-            </td>
-            <td>
-                <a class="btn btn-lg"
-                   asp-page="./Edit"
-                   asp-route-restaurantId="@restaurant.Id">
-                    <span class="fa fa-edit"></span>
+        </a>
+    </td>
+    <td>
+        <a class="btn btn-lg"
+           asp-page="./Edit"
+           asp-route-restaurantId="@restaurant.Id">
+            <span class="fa fa-edit"></span>
 
-                </a>
-            </td>
-        </tr>
+        </a>
+    </td>
+    <td>
+        <a class="btn btn-lg"
+           asp-page="./Delete"
+           asp-route-restaurantId="@restaurant.Id">
+            <span class="fa fa-trash"></span>
+
+        </a>
+    </td>
+</tr>
 
     }
 
@@ -60,9 +68,12 @@
 
 
 </table>
+@* Create page bouwen van edit page *@
+<a asp-page="./Edit" class="btn btn-primary">Add new</a>
+@section footer {
 
+    <div>@Model.Message</div>
+}
 
-
-<div>@Model.Message</div>
 
 

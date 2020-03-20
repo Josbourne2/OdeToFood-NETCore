@@ -9,33 +9,43 @@ using OdeToFood.Data;
 
 namespace OdeToFood.Pages.Restaurants
 {
-    public class DetailModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly IRestaurantData restaurantData;
 
-
-        [TempData]
-        public string Message { get; set; }
         public Restaurant Restaurant { get; set; }
 
-        public DetailModel(IRestaurantData restaurantData)
+        public DeleteModel(IRestaurantData restaurantData)
         {
             this.restaurantData = restaurantData;
-
         }
-        //public void OnGet(int restaurantId)
-        //{
-        //    Restaurant = restaurantData.GetById(restaurantId);
-        //}
-
         public IActionResult OnGet(int restaurantId)
         {
             Restaurant = restaurantData.GetById(restaurantId);
-            if(Restaurant==null)
+            if (Restaurant == null)
             {
                 return RedirectToPage("./NotFound");
             }
+            //Are you sure you want to delete?
             return Page();
+            //Confirm form
+        }
+
+        public IActionResult OnPost(int restaurantId)
+        {
+            //Get restaurant, delete
+            var restaurant = restaurantData.Delete(restaurantId);
+            restaurantData.Commit();
+            //Redirect somewhere
+            if (restaurant == null)
+            {
+                return RedirectToPage("./NotFound");
+
+
+            }
+            TempData["Message"] = $"{restaurant.Name} deleted";
+            return RedirectToPage("./List");
+
         }
     }
 }

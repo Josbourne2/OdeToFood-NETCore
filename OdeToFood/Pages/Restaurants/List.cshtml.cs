@@ -21,6 +21,7 @@ namespace OdeToFood.Pages.Restaurants
         [BindProperty(SupportsGet =true)]
         public string SearchTerm { get; set; }
 
+        [TempData]
         public string Message { get; set; }
         public IEnumerable<Restaurant> Restaurants { get; set; } //Waarom nog een getter en setter hier?
 
@@ -34,7 +35,7 @@ namespace OdeToFood.Pages.Restaurants
         public void OnGet() //string searchTerm parameter komt overeen met naam van het search form
         {
             //HttpContext.Request.QueryString kan, maar er is een beter manier..
-            Message = config["Message"];
+            //Message = config["Message"];
             //Restaurants = restaurantData.GetAll();
             Restaurants = restaurantData.GetRestaurantsByName(SearchTerm);
             _logger.LogInformation("Getting restaurants!");
