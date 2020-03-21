@@ -38,7 +38,7 @@ namespace OdeToFood.Pages.Restaurants
             //Message = config["Message"];
             //Restaurants = restaurantData.GetAll();
             Restaurants = restaurantData.GetRestaurantsByName(SearchTerm);
-            _logger.LogInformation("Getting restaurants!");
+            _logger.LogInformation("Getting refdsfdsfastaurants!");
         }
     }
 }

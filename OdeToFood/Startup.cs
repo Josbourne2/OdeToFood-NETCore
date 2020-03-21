@@ -26,6 +26,7 @@ namespace OdeToFood
         public void ConfigureServices(IServiceCollection services)
         {
             //Add database
+            services.AddLogging();
             services.AddDbContextPool<OdeToFoodDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("OdeToFoodDb"));
