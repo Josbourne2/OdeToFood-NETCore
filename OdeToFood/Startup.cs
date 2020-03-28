@@ -35,6 +35,7 @@ namespace OdeToFood
 
             //Add mockup data
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
+            //services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
             services.AddRazorPages();
             services.AddControllers();
         }
@@ -56,6 +57,7 @@ namespace OdeToFood
             
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            //app.UseStaticFiles(new StaticFileOptions { RequestPath = "/node_modules" });
             app.UseNodeModules(); // Dit is custom implementatie van IApplicationBuilder
             app.UseRouting();
 
